@@ -24,7 +24,7 @@ public class Main {
               price *= 1;
             }
         }
-        
+         
         System.out.printf("The price of a ticket is : Rs. %.2f", price);
     }    
 }
