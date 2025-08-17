@@ -12,8 +12,9 @@ public class Exercise{
         char operator;
         double result = 0;
         char again;
-
+        
         do {
+            boolean validOperation = true;
 
             System.out.print("Enter Num1 : ");
             num1 = in.nextDouble();
@@ -25,13 +26,26 @@ public class Exercise{
             switch(operator){
                 case '+' -> result = num1 + num2;
                 case '-' -> result = num1 - num2;
-                case '/' -> result = num1 / num2;
+                case '/' -> {
+                    if (num2 == 0) {
+                        System.out.println("Cannot divide by zero!");
+                        validOperation = false;
+                    }
+                    else{
+                        result = num1 / num2;
+                    }
+                }
                 case '*' -> result = num1 * num2;
-                default -> System.out.print("Invalid Operator");
+                default -> {
+                    System.out.print("Invalid Operator");
+                    validOperation = false;
+                }
 
             }
 
-            System.out.printf("Result is : %.2f", result);
+            if (validOperation) {
+                System.out.printf("Result is : %.2f", result);
+            }
 
             System.out.print("\nWould You like to calculate again ? (y/n) ");
             again = in.next().charAt(0);
